@@ -1,0 +1,7 @@
+# database file
+*.db
+
+# temporal file
+.DS_Store
+__pycache__/
+.vscode/
