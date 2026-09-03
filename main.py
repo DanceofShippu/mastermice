@@ -6,6 +6,8 @@ from ops import (
 )
 from arts import draw_mouse, YELLOW, RESET
 
+VERSION = '26.1.0'
+
 
 def update_menu():
     """第二层: 更新 -> 新建 / 更新现有."""
@@ -51,7 +53,7 @@ def picking_mode(what):
 def main_menu():
     """第一层: 更新 / 退出. 查询请用 DB Browser for SQLite 打开 micecolony.db."""
     while True:
-        print('\n=== Mouse Colony Manager ===')
+        print(f'\n=== Mouse Colony Manager v{VERSION} ===')
         print('(1) Update')
         print('(q) Quit')
         cmd = input('> ').strip()

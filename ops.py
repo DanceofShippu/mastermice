@@ -207,9 +207,9 @@ def _split_col(raw):
     return [x.strip() for x in raw.split(',')] if raw and raw.strip() else []
 
 def _prompt_single_field(field, prompt):
-    """单条模式读一个字段: 校验失败/!r 重新输入, !c 取消整个操作."""
+    """单条模式读一个字段: 空输入=跳过该字段; 校验失败/!r 重新输入, !c 取消."""
     while True:
-        raw = input(f'{prompt} (!c cancel, !r redo): ').strip()
+        raw = input(f'{prompt} (empty to skip; !c cancel, !r redo): ').strip()
         if raw == _CMD_CANCEL:
             raise UserAbort()
         if raw == _CMD_REDO:
@@ -249,7 +249,7 @@ def _collect_create_rows(single=False, preset_id=None):
     if preset_id:
         ids = [preset_id]
     elif single:
-        raw = input('mouse ID (!c cancel): ').strip()
+        raw = input('mouse ID (required; !c cancel): ').strip()
         if raw == _CMD_CANCEL:
             raise UserAbort()
         ids = [raw]
@@ -317,7 +317,7 @@ def _collect_update_rows(single=False, target_id=None, fields=None):
     if target_id:
         ids = [target_id]
     elif single:
-        raw = input('mouse ID (!c cancel): ').strip()
+        raw = input('mouse ID (required; !c cancel): ').strip()
         if raw == _CMD_CANCEL:
             raise UserAbort()
         ids = [raw]
