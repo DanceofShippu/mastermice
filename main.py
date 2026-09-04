@@ -6,7 +6,7 @@ from ops import (
 )
 from arts import draw_mouse, YELLOW, RESET
 
-VERSION = '26.1.0'
+VERSION = '26.1.1'
 
 
 def update_menu():
@@ -31,7 +31,7 @@ def update_menu():
                 mouse_id = input('mouse id to update: ').strip()
                 manage_mouse(mouse_id)
             else:
-                # 批量更新覆盖所有字段(含 status). 处死=sacrificed, 寄出=sent out.
+                # 批量更新覆盖所有字段(含 status). 处死=sacrificed, 寄出=sent out, 失踪=missing.
                 batch_apply(action='update')
         else:
             print(f'{YELLOW}Unknown option.{RESET}')

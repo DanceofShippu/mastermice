@@ -1,4 +1,4 @@
-# Mouse Colony Manager v26.1.0
+# Mouse Colony Manager v26.1.1
 
 实验小鼠群体管理命令行工具（CLI）。单文件 SQLite 数据库 + 事件日志（event-log）架构：每一次变更（新建、性别、处死、寄出……）都会在 `events` 表留下一条带日期的事件记录，形成每只小鼠的完整历史。
 
@@ -8,7 +8,7 @@
 
 - **新建小鼠**：单只 / 批量（逗号分隔 ID 与字段值，值不够时自动用最后一个值向后填充）
 - **更新小鼠**：单只（管理菜单逐字段更新）/ 批量更新，全部字段 + 特殊字段（multi-checks、notes）
-- **状态管理**：`alive` / `sacrificed` / `died due to accident` / `sent out`（批量处死 = status 填 `sacrificed`）
+- **状态管理**：`alive` / `sacrificed` / `died due to accident` / `sent out` / `missing`（批量处死 = status 填 `sacrificed`，失踪 = `missing`）
 - **git 式提交流程**：先收集（暂存）→ 审查（diff）→ 确认 → 单事务写入，出错整批回滚
 - **录入中途可退出**：任何输入处 `!c` 取消整个操作，`!r` 重输当前字段；审查时可 `r` 全部重填
 - **ID 大小写敏感**：`GYP1` 与 `gyp1` 是两只不同的鼠（主键语义）
@@ -31,7 +31,7 @@ python3 main.py
     (='.'=)
     (")_(")~
 
-=== Mouse Colony Manager v26.1.0 ===
+=== Mouse Colony Manager v26.1.1 ===
 (1) Update
 (q) Quit
 > 
@@ -81,6 +81,9 @@ Apply? (y)es / (n)o / (r)estart entry:
 用 DB Browser for SQLite 打开 `micecolony.db` 即可查询、导出；CLI 与 GUI 同时操作同一文件时注意先后提交。
 
 ## 版本记录
+
+**26.1.1**
+- 状态新增 `missing`（失踪）
 
 **26.1.0**
 - 单条模式所有输入提示补充 `empty to skip` / `required` 说明，与批量模式对齐

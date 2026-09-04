@@ -13,7 +13,7 @@ _FIELD_PROMPTS = {
     'strain':    'strain',
     'father_id': 'father id',
     'mother_id': 'mother id',
-    'status':    "status(alive/sacrificed/died due to accident/sent out)",
+    'status':    "status(alive/sacrificed/died due to accident/sent out/missing)",
     'notes':     'notes',
 }
 # 空值有语义的枚举字段: 空 -> 'not checked', 而非 NULL
@@ -21,7 +21,8 @@ _ENUM_FIELDS = ('gender',)
 # 合法性别值
 _VALID_GENDERS = ('m', 'f', 'not checked')
 # 合法状态值; 批量更新 status 时在校验用
-_VALID_STATUS = ('alive', 'sacrificed', 'died due to accident', 'sent out')
+_VALID_STATUS = ('alive', 'sacrificed', 'died due to accident', 'sent out',
+                 'missing')
 # event_type 命名与单条 update_* 完全一致 (father/mother 带空格)
 _EVENT_KEY = {
     'gender': 'gender', 'dob': 'dob', 'location': 'location',
